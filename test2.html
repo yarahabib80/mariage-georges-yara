@@ -1,1 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Mariage Georges & Yara</title>
+<style>
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f5f2;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
 
+.container {
+  background: white;
+  padding: 40px 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  max-width: 600px;
+  width: 90%;       /* Pour prendre presque tout l’écran sur mobile */
+  min-height: 100vh; /* Container full screen on mobile */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 32px;
+  color: #b8860b;
+  margin-bottom: 20px;
+}
+
+#message {
+  font-size: 20px;
+  margin-bottom: 30px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+button {
+  padding: 15px 30px;
+  margin: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 80%;  /* Full width on mobile */
+  max-width: 250px;
+  transition: all 0.2s ease;
+}
+
+button.confirm {
+  background-color: #c8a96a;
+  color: white;
+}
+
+button.confirm:hover {
+  background-color: #b8860b;
+}
+
+button.decline {
+  background-color: #999;
+  color: white;
+}
+
+button.decline:hover {
+  background-color: #555;
+}
+
+/* Responsive tweaks */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 28px;
+  }
+  #message {
+    font-size: 18px;
+  }
+  button {
+    width: 90%;
+    font-size: 16px;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Georges & Yara 🤍</h1>
+  <div id="message"></div>
+  <button class="confirm" onclick="confirmAttendance()">Je confirme ma présence</button>
+  <button class="decline" onclick="declineAttendance()">Je ne pourrai pas venir</button>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const name = params.get("name");
+const guests = params.get("guests");
+
+if(name && guests){
+  document.getElementById("message").innerHTML =
+    "<p>Chère <b>" + name + "</b>,</p>" +
+    "<p>Nous avons le plaisir de vous réserver <b>" + guests + "</b> place(s) pour célébrer notre mariage.</p>";
+} else {
+  document.getElementById("message").innerHTML =
+    "<p>Bienvenue sur notre page de confirmation 🤍</p>";
+}
+
+function confirmAttendance() {
+  alert("Merci pour votre confirmation 🤍");
+}
+
+function declineAttendance() {
+  alert("Merci de nous avoir informés.");
+}
+</script>
+
+</body>
+</html>
